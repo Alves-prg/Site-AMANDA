@@ -1,18 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>EU TE AMO</title>
-    <link rel="stylesheet" href="principal.css">
+    <link rel="stylesheet" href="principal.css" />
 </head>
 <body>
     <header>
         <h1>EU TE AMO MUITO!! VOCÊ É MINHA VIDA</h1>
     </header>
 
-    <audio autoplay loop>
-        <source src="musica/baco.mp3" type="audio/mpeg">
+    <audio id="musica" loop>
+        <source src="musica/baco.mp3" type="audio/mpeg" />
     </audio>
+
+    <script>
+        // Tocar música após o primeiro clique na página
+        document.body.addEventListener('click', () => {
+            const audio = document.getElementById('musica');
+            if (audio.paused) {
+                audio.play();
+                console.log('Música iniciada após clique!');
+            }
+        }, { once: true });
+    </script>
+
+    <div class="imagens" id="carrossel">
+        <img src="imagens/IMG-20250611-WA0016.jpg" alt="Imagem principal" />
+        <div id="mensagem">
+            Estamos todo esse tempo juntos, e tudo me fez perceber que você foi a melhor escolha
+        </div>
+        <div id="contador">
+            <span id="dias">0</span> dias 
+            <span id="horas">00</span> horas 
+            <span id="minutos">00</span> minutos 
+            <span id="segundos">00</span> segundos
+        </div>
+    </div>
+
+    <script>
+        const imagens = [
+            'imagens/IMG-20250611-WA0016.jpg',
+            'imagens/IMG-20250611-WA0017.jpg',
+            'imagens/IMG-20250611-WA0018.jpg',
+            'imagens/IMG-20250611-WA0020.jpg',
+            'imagens/IMG-20250611-WA0021.jpg',
+            'imagens/IMG-20250611-WA0022.jpg',
+            'imagens/IMG-20250611-WA0023.jpg',
+            'imagens/IMG-20250611-WA0024.jpg',
+            'imagens/IMG-20250611-WA0025.jpg',
+            'imagens/IMG-20250611-WA0026.jpg',
+        ];
+
+        let indice = 0;
+        const imgElement = document.getElementById('carrossel').querySelector('img');
+
+        setInterval(() => {
+            indice = (indice + 1) % imagens.length; // volta ao começo
+            imgElement.src = imagens[indice];
+        }, 2500); // 2000ms = 2,5 segundos
+
+        function atualizarContador() {
+            const dataInicio = new Date('2023-12-01T00:00:00');
+            const agora = new Date();
+
+            let diff = agora - dataInicio;
+            if (diff < 0) diff = 0;
+
+            const segundos = Math.floor(diff / 1000) % 60;
+            const minutos = Math.floor(diff / (1000 * 60)) % 60;
+            const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            document.getElementById('dias').textContent = dias;
+            document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+            document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+            document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
+    </script>
+    <footer class="mensagem">
+        <p>Eu te amo muito! Quando tudo começou, éramos apenas duas pessoas perdidas, cada uma vivendo sua própria vida. Mas então, tudo mudou, e minha vida passou a ser você. É uma verdadeira honra estar ao lado de alguém tão companheira e carinhosa. Você consegue expressar um amor que eu sempre procurei, e isso me faz sentir uma paz enorme. Me sinto amado, exatamente pelo que eu sou, e isso é o que mais importa para mim.</p>
+    </footer>
 </body>
 </html>
