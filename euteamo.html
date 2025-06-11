@@ -16,15 +16,30 @@
     </audio>
 
     <script>
-        // Tocar música após o primeiro clique na página
-        document.body.addEventListener('click', () => {
-            const audio = document.getElementById('musica');
-            if (audio.paused) {
-                audio.play();
-                console.log('Música iniciada após clique!');
+        const audio = document.getElementById('musica');
+
+        // Tenta autoplay automaticamente ao carregar
+        window.addEventListener('load', () => {
+            const tentativa = audio.play();
+            if (tentativa !== undefined) {
+                tentativa
+                    .then(() => {
+                        console.log('Autoplay funcionou!');
+                    })
+                    .catch(() => {
+                        console.log('Autoplay bloqueado. Aguardando clique do usuário...');
+                        // Ativa ao primeiro clique
+                        document.body.addEventListener('click', () => {
+                            if (audio.paused) {
+                                audio.play();
+                                console.log('Música iniciada após clique!');
+                            }
+                        }, { once: true });
+                    });
             }
-        }, { once: true });
+        });
     </script>
+
 
     <div class="imagens" id="carrossel">
         <img src="imagens/IMG-20250611-WA0016.jpg" alt="Imagem principal" />
