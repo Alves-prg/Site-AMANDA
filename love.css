@@ -1,7 +1,12 @@
 .botao {
     background-color: darkslateblue;
+    border-radius: 50;
 }
 
 body {
     background-color: darkslateblue;
+}
+
+.clique {
+    font-weight: bolder;
 }
