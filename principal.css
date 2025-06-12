@@ -1,5 +1,12 @@
-body {
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* impede scroll horizontal */
+  overflow-y: auto;   /* mantém scroll vertical normal no restante da página */
+}
+
+body {
   background-color: darkslateblue;
   color: white;
   font-family: Arial, sans-serif;
@@ -59,7 +66,9 @@ header {
 /* Mensagem fixa no rodapé */
 .mensagem {
   max-width: 600px;
-  margin: 0 auto 20px auto;
+  max-height: 120px;       /* Altura máxima para a caixa */
+  overflow-y: auto;        /* Scroll interno se precisar */
+  margin: 0 auto 0 auto;   /* Sem margem inferior */
   padding: 12px 20px;
   color: darkslateblue;
   font-size: 16px;
@@ -73,7 +82,7 @@ header {
   transform: translateX(-50%);
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 2;
+  z-index: 9999;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.4;
@@ -162,5 +171,6 @@ header {
     font-size: 14px;
     padding: 10px 15px;
     max-width: 95vw;
+    max-height: 100px;  /* menor altura no celular */
   }
 }
