@@ -69,7 +69,7 @@ header {
   left: 0;
 }
 
-.flowers {
+..flowers {
     position: fixed;
     top: 0;
     left: 0;
@@ -82,31 +82,44 @@ header {
 
 .flowers span {
     position: absolute;
-    top: -50px;
-    font-size: 2rem;
-    animation: cair 10s linear infinite;
-    opacity: 0.8;
+    top: -5%;
+    font-size: 2.5rem;
+    opacity: 0.85;
+    animation-name: cair, girar;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
+/* Queda suave com leve deslocamento */
 @keyframes cair {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(-10%) translateX(0);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(110vh) translateX(30px);
         opacity: 0;
     }
 }
 
-/* Posicionamento aleatório para dar variação */
-.flowers span:nth-child(1) { left: 5%; animation-delay: 0s; }
-.flowers span:nth-child(2) { left: 15%; animation-delay: 1s; }
-.flowers span:nth-child(3) { left: 25%; animation-delay: 2s; }
-.flowers span:nth-child(4) { left: 35%; animation-delay: 3s; }
-.flowers span:nth-child(5) { left: 45%; animation-delay: 4s; }
-.flowers span:nth-child(6) { left: 55%; animation-delay: 5s; }
-.flowers span:nth-child(7) { left: 65%; animation-delay: 6s; }
-.flowers span:nth-child(8) { left: 75%; animation-delay: 7s; }
-.flowers span:nth-child(9) { left: 85%; animation-delay: 8s; }
-.flowers span:nth-child(10) { left: 95%; animation-delay: 9s; }
+/* Rotação leve para parecer mais natural */
+@keyframes girar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Cada flor com posição, atraso e duração diferentes */
+.flowers span:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
+.flowers span:nth-child(2) { left: 15%; animation-duration: 10s; animation-delay: 2s; }
+.flowers span:nth-child(3) { left: 25%; animation-duration: 14s; animation-delay: 4s; }
+.flowers span:nth-child(4) { left: 35%; animation-duration: 13s; animation-delay: 1s; }
+.flowers span:nth-child(5) { left: 45%; animation-duration: 11s; animation-delay: 3s; }
+.flowers span:nth-child(6) { left: 55%; animation-duration: 15s; animation-delay: 5s; }
+.flowers span:nth-child(7) { left: 65%; animation-duration: 12s; animation-delay: 6s; }
+.flowers span:nth-child(8) { left: 75%; animation-duration: 9s; animation-delay: 4s; }
+.flowers span:nth-child(9) { left: 85%; animation-duration: 13s; animation-delay: 2s; }
+.flowers span:nth-child(10) { left: 95%; animation-duration: 11s; animation-delay: 7s; }
