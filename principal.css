@@ -69,44 +69,44 @@ header {
   left: 0;
 }
 
-/* Corações */
-.hearts {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  overflow: hidden;
+.flowers {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
 }
 
-.hearts span {
-  position: absolute;
-  top: -50px;
-  font-size: 30px;
-  animation: fall 5s linear infinite;
-  opacity: 0.8;
+.flowers span {
+    position: absolute;
+    top: -50px;
+    font-size: 2rem;
+    animation: cair 10s linear infinite;
+    opacity: 0.8;
 }
 
-/* Posição aleatória e delays */
-.hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
-.hearts span:nth-child(2) { left: 20%; animation-delay: 1s; }
-.hearts span:nth-child(3) { left: 30%; animation-delay: 2s; }
-.hearts span:nth-child(4) { left: 40%; animation-delay: 3s; }
-.hearts span:nth-child(5) { left: 50%; animation-delay: 1.5s; }
-.hearts span:nth-child(6) { left: 60%; animation-delay: 2.5s; }
-.hearts span:nth-child(7) { left: 70%; animation-delay: 3.5s; }
-.hearts span:nth-child(8) { left: 80%; animation-delay: 4s; }
-.hearts span:nth-child(9) { left: 90%; animation-delay: 0.5s; }
-.hearts span:nth-child(10) { left: 25%; animation-delay: 2.2s; }
-
-@keyframes fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
+@keyframes cair {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
+
+/* Posicionamento aleatório para dar variação */
+.flowers span:nth-child(1) { left: 5%; animation-delay: 0s; }
+.flowers span:nth-child(2) { left: 15%; animation-delay: 1s; }
+.flowers span:nth-child(3) { left: 25%; animation-delay: 2s; }
+.flowers span:nth-child(4) { left: 35%; animation-delay: 3s; }
+.flowers span:nth-child(5) { left: 45%; animation-delay: 4s; }
+.flowers span:nth-child(6) { left: 55%; animation-delay: 5s; }
+.flowers span:nth-child(7) { left: 65%; animation-delay: 6s; }
+.flowers span:nth-child(8) { left: 75%; animation-delay: 7s; }
+.flowers span:nth-child(9) { left: 85%; animation-delay: 8s; }
+.flowers span:nth-child(10) { left: 95%; animation-delay: 9s; }
