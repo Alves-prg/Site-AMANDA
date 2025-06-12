@@ -13,6 +13,7 @@ header {
   background-color: #2f3b75;
 }
 
+/* Container das imagens e textos */
 .imagens {
   margin: 30px auto 100px auto;
   display: flex;
@@ -32,11 +33,11 @@ header {
 }
 
 .imagens img {
-  width: 100%;
   max-width: 100%;
+  max-height: 300px;   /* Limite para altura no desktop */
   height: auto;
   border-radius: 8px;
-  object-fit: contain;
+  object-fit: cover;   /* Preenche o espaço, corta se necessário */
   margin-bottom: 15px;
 }
 
@@ -55,6 +56,7 @@ header {
   font-family: Arial, sans-serif;
 }
 
+/* Mensagem fixa no rodapé */
 .mensagem {
   max-width: 600px;
   margin: 0 auto 20px auto;
@@ -123,19 +125,42 @@ header {
 .flowers span:nth-child(9) { left: 90%; animation-duration: 13s; animation-delay: 2s; }
 .flowers span:nth-child(10) { left: 100%; animation-duration: 11s; animation-delay: 7s; }
 
-/* 📱 Responsivo */
+/* 📱 Ajustes responsivos para celular */
 @media (max-width: 480px) {
-  .mensagem {
-    font-size: 14px;
-    padding: 10px 20px;
+
+  header {
+    font-size: 22px;
+    padding: 10px 5px;
+  }
+
+  .imagens {
+    max-width: 100vw;
+    width: 100vw;
+    padding: 10px 15px;
+    margin: 20px 0 80px 0;
   }
 
   .imagens img {
-    width: 100%;
-    object-fit: contain;
+    max-width: 100%;
+    max-height: 250px; /* menor altura pra celular */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
   }
 
   #mensagem {
     font-size: 14px;
+    text-align: center;
+  }
+
+  #contador {
+    font-size: 18px;
+  }
+
+  .mensagem {
+    font-size: 14px;
+    padding: 10px 15px;
+    max-width: 95vw;
   }
 }
