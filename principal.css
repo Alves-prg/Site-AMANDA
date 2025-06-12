@@ -21,6 +21,7 @@ header {
   border: 4px solid darkslateblue;
   border-radius: 10px;
   padding: 20px;
+  padding-bottom: 80px; /* Espaço extra para a mensagem fixa */
   background-color: white;
   color: darkslateblue;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -32,9 +33,10 @@ header {
 
 .imagens img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 15px;
 }
 
@@ -54,18 +56,25 @@ header {
 }
 
 .mensagem {
-  width: 100%;
-  padding: 15px 30px;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  padding: 12px 20px;
   color: darkslateblue;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   text-align: left;
   background-color: #f0f0ff;
   box-sizing: border-box;
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   z-index: 2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
 }
 
 /* 🌻 Flores caindo */
@@ -85,34 +94,24 @@ header {
   top: -5%;
   font-size: 2.5rem;
   opacity: 0.85;
-  animation-name: cair, girar;
+  animation-name: cairGirar;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-/* 🌻 Queda */
-@keyframes cair {
+/* 🌻 Animação combinada: queda + giro */
+@keyframes cairGirar {
   0% {
-    transform: translateY(-10%) translateX(0);
+    transform: translateY(-10%) translateX(0) rotate(0deg);
     opacity: 1;
   }
   100% {
-    transform: translateY(110vh) translateX(30px);
+    transform: translateY(110vh) translateX(30px) rotate(360deg);
     opacity: 0;
   }
 }
 
-/* 🌻 Giro */
-@keyframes girar {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* 🌻 Diferentes configurações */
+/* 🌻 Diferentes durações e delays para as flores */
 .flowers span:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
 .flowers span:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
 .flowers span:nth-child(3) { left: 30%; animation-duration: 14s; animation-delay: 4s; }
@@ -133,6 +132,7 @@ header {
 
   .imagens img {
     width: 100%;
+    object-fit: contain;
   }
 
   #mensagem {
