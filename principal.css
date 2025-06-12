@@ -14,8 +14,7 @@ header {
 }
 
 .imagens {
-  position: relative;
-  margin: 30px auto 60px auto;
+  margin: 30px auto 100px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,10 +26,12 @@ header {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 320px;
   width: 90vw;
+  z-index: 1;
+  position: relative;
 }
 
 .imagens img {
-  width: 250px;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
@@ -42,6 +43,7 @@ header {
   font-weight: 600;
   margin-bottom: 15px;
   color: darkslateblue;
+  text-align: left;
 }
 
 #contador {
@@ -59,14 +61,14 @@ header {
   font-weight: 600;
   text-align: left;
   background-color: #f0f0ff;
-  border-radius: 0;
-  box-shadow: none;
   box-sizing: border-box;
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 2;
 }
 
+/* 🌻 Flores caindo */
 .flowers {
   position: fixed;
   top: 0;
@@ -88,6 +90,7 @@ header {
   animation-iteration-count: infinite;
 }
 
+/* 🌻 Queda */
 @keyframes cair {
   0% {
     transform: translateY(-10%) translateX(0);
@@ -99,6 +102,7 @@ header {
   }
 }
 
+/* 🌻 Giro */
 @keyframes girar {
   0% {
     transform: rotate(0deg);
@@ -108,6 +112,7 @@ header {
   }
 }
 
+/* 🌻 Diferentes configurações */
 .flowers span:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
 .flowers span:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
 .flowers span:nth-child(3) { left: 30%; animation-duration: 14s; animation-delay: 4s; }
@@ -119,18 +124,18 @@ header {
 .flowers span:nth-child(9) { left: 90%; animation-duration: 13s; animation-delay: 2s; }
 .flowers span:nth-child(10) { left: 100%; animation-duration: 11s; animation-delay: 7s; }
 
-/* Responsividade para celular */
+/* 📱 Responsivo */
 @media (max-width: 480px) {
-  #mensagem {
-    font-size: 14px;
-  }
-
   .mensagem {
     font-size: 14px;
-    padding: 10px 15px;
+    padding: 10px 20px;
   }
 
   .imagens img {
-    width: 90%;
+    width: 100%;
+  }
+
+  #mensagem {
+    font-size: 14px;
   }
 }
