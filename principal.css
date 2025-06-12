@@ -1,59 +1,60 @@
+/* Reset básico e estrutura */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* impede scroll horizontal */
-  overflow-y: auto;   /* mantém scroll vertical normal no restante da página */
-}
-
-body {
+  overflow-x: hidden; /* nada de scroll horizontal */
+  overflow-y: auto;   /* scroll vertical só se necessário */
+  font-family: Arial, sans-serif;
   background-color: darkslateblue;
   color: white;
-  font-family: Arial, sans-serif;
   text-align: center;
 }
 
+/* Header mais compacto */
 header {
-  padding: 5px;
-  font-size: 28px;
+  padding: 10px 5px;
+  font-size: 22px;       /* menor que antes */
   font-weight: bold;
   background-color: #2f3b75;
+  line-height: 1.2;
 }
 
-/* Container das imagens e textos */
+/* Container principal das imagens */
 .imagens {
-  margin: 30px auto 100px auto;
+  max-width: 320px;
+  width: 90vw;
+  margin: 20px auto 0 auto;  /* margem inferior 0 para evitar scroll */
+  padding: 20px 20px 130px 20px; /* padding-bottom pra evitar conteúdo sob mensagem fixa */
+  background-color: white;
+  color: darkslateblue;
+  border-radius: 10px;
+  border: 4px solid darkslateblue;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 4px solid darkslateblue;
-  border-radius: 10px;
-  padding: 20px;
-  padding-bottom: 80px; /* Espaço extra para a mensagem fixa */
-  background-color: white;
-  color: darkslateblue;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  max-width: 320px;
-  width: 90vw;
-  z-index: 1;
   position: relative;
+  box-sizing: border-box;
 }
 
+/* Imagem com limite de altura e largura */
 .imagens img {
   max-width: 100%;
-  max-height: 300px;   /* Limite para altura no desktop */
-  height: auto;
+  max-height: 250px;  /* limitar altura para evitar scroll */
   border-radius: 8px;
-  object-fit: cover;   /* Preenche o espaço, corta se necessário */
+  object-fit: cover;
   margin-bottom: 15px;
 }
 
+/* Texto mensagem e contador */
 #mensagem {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 15px;
   color: darkslateblue;
   text-align: left;
+  width: 100%;
 }
 
 #contador {
@@ -61,34 +62,34 @@ header {
   font-weight: bold;
   color: darkslateblue;
   font-family: Arial, sans-serif;
+  width: 100%;
 }
 
 /* Mensagem fixa no rodapé */
 .mensagem {
-  max-width: 600px;
-  max-height: 120px;       /* Altura máxima para a caixa */
-  overflow-y: auto;        /* Scroll interno se precisar */
-  margin: 0 auto 0 auto;   /* Sem margem inferior */
-  padding: 12px 20px;
-  color: darkslateblue;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: left;
-  background-color: #f0f0ff;
-  box-sizing: border-box;
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  max-width: 600px;
+  max-height: 110px;  /* altura fixa */
+  width: 90vw;
+  padding: 12px 20px;
+  background-color: #f0f0ff;
+  color: darkslateblue;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  border-radius: 8px 8px 0 0; /* borda arredondada só no topo */
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+  overflow-y: auto;   /* scroll interno se texto ultrapassar */
   z-index: 9999;
+  box-sizing: border-box;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  line-height: 1.4;
 }
 
-/* 🌻 Flores caindo */
+/* Flores animadas (mantive seu código) */
 .flowers {
   position: fixed;
   top: 0;
@@ -110,7 +111,7 @@ header {
   animation-iteration-count: infinite;
 }
 
-/* 🌻 Animação combinada: queda + giro */
+/* Animação das flores */
 @keyframes cairGirar {
   0% {
     transform: translateY(-10%) translateX(0) rotate(0deg);
@@ -122,7 +123,7 @@ header {
   }
 }
 
-/* 🌻 Diferentes durações e delays para as flores */
+/* Diferentes durações para cada flor */
 .flowers span:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
 .flowers span:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 2s; }
 .flowers span:nth-child(3) { left: 30%; animation-duration: 14s; animation-delay: 4s; }
@@ -134,28 +135,24 @@ header {
 .flowers span:nth-child(9) { left: 90%; animation-duration: 13s; animation-delay: 2s; }
 .flowers span:nth-child(10) { left: 100%; animation-duration: 11s; animation-delay: 7s; }
 
-/* 📱 Ajustes responsivos para celular */
+/* Responsividade para celular */
 @media (max-width: 480px) {
-
   header {
-    font-size: 22px;
-    padding: 10px 5px;
+    font-size: 18px;
+    padding: 8px 5px;
   }
 
   .imagens {
     max-width: 100vw;
     width: 100vw;
-    padding: 10px 15px;
-    margin: 20px 0 80px 0;
+    padding: 15px 15px 130px 15px;
+    margin: 10px 0 0 0;
+    border-width: 2px;
   }
 
   .imagens img {
-    max-width: 100%;
-    max-height: 250px; /* menor altura pra celular */
-    height: auto;
-    border-radius: 8px;
+    max-height: 180px;
     margin-bottom: 10px;
-    object-fit: cover;
   }
 
   #mensagem {
@@ -164,13 +161,13 @@ header {
   }
 
   #contador {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .mensagem {
     font-size: 14px;
+    max-height: 100px;
+    width: 95vw;
     padding: 10px 15px;
-    max-width: 95vw;
-    max-height: 100px;  /* menor altura no celular */
   }
 }
